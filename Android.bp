@@ -162,6 +162,7 @@ java_library {
     defaults: ["okhttp_errorprone_defaults"],
     host_supported: true,
     apex_available: [
+        "//apex_available:platform",
         "com.android.adservices",
         "com.android.devicelock",
         "com.android.extservices",
@@ -175,7 +176,6 @@ java_library {
     srcs: [
         "okhttp/src/main/java/**/*.java",
         "okhttp-urlconnection/src/main/java/**/*.java",
-        "okio/okio/src/main/java/**/*.java",
         ":okhttp_version.java",
     ],
 
@@ -184,6 +184,10 @@ java_library {
         // is not available. This provides stubs for it which allows the code to
         // compile.
         "okhttp-android-util-log",
+    ],
+
+    static_libs: [
+        "okio-lib",
     ],
 
     installable: true,
